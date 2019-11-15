@@ -81,6 +81,7 @@ export default class Toolbar extends Component {
     let alterateColor = alterate ? SharedStyle.MATERIAL_COLORS[500].orange : '';
 
     let sorter = [
+      /*
       {
         index: 0, condition: allowProjectFileSupport, dom: <ToolbarButton
           active={false}
@@ -89,10 +90,13 @@ export default class Toolbar extends Component {
           <FaFile />
         </ToolbarButton>
       },
+      */
       {
-        index: 1, condition: allowProjectFileSupport,
+        index: 0, condition: allowProjectFileSupport,
         dom: <ToolbarSaveButton state={state} />
-      },
+      }
+      /*
+      ,      
       {
         index: 2, condition: allowProjectFileSupport,
         dom: <ToolbarLoadButton state={state} />
@@ -130,6 +134,7 @@ export default class Toolbar extends Component {
           <MdSettings />
         </ToolbarButton>
       }
+      */
     ];
 
     sorter = sorter.concat(toolbarButtons.map((Component, key) => {

@@ -36,6 +36,8 @@ class Line{
       type
     }, properties);
 
+    console.log(state, layerID, type, x0, y0, x1, y1, properties, line);
+
     state = state.setIn(['scene', 'layers', layerID, 'lines', lineID], line);
 
     return {updatedState: state, line};
