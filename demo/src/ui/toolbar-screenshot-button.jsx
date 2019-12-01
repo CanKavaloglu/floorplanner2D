@@ -64,6 +64,7 @@ export default function ToolbarScreenshotButton({mode}, {translator}) {
     let serializer = new XMLSerializer();
 
     let img = new Image;
+    let logo = new Image;
 
     // I create the new canvas to draw
     let canvas = document.createElement('canvas');
@@ -84,8 +85,18 @@ export default function ToolbarScreenshotButton({mode}, {translator}) {
     img.crossOrigin = 'anonymous';
     img.src = `data:image/svg+xml;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;
 
+    logo.crossOrigin = 'anonymous';
+    logo.src = 'https://media.istockphoto.com/photos/orange-picture-id185284489?k=6&m=185284489&s=612x612&w=0&h=x_w4oMnanMTQ5KtSNjSNDdiVaSrlxM4om-3PQTIzFaY=';
+
     img.onload = () => {
+      console.log('BASE');
       ctx.drawImage(img, 0, 0, maxWidthSVGElement.width.baseVal.value, maxWidthSVGElement.height.baseVal.value);
+      //imageBrowserDownload(canvas.toDataURL());
+    };
+
+    logo.onload = () => {
+      console.log('ORANGE');
+      ctx.drawImage(logo, 0, 0, 10, 20);
       imageBrowserDownload(canvas.toDataURL());
     };
 

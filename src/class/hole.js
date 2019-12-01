@@ -39,6 +39,8 @@ class Hole {
     state = state.updateIn(['scene', 'layers', layerID, 'lines', lineID, 'holes'],
       holes => holes.push(holeID));
 
+    console.log(hole);
+
     return {updatedState: state, hole};
   }
 

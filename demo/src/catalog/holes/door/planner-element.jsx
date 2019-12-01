@@ -5,10 +5,10 @@ import path from 'path';
 
 let cached3DDoor = null;
 
-const STYLE_HOLE_BASE = {stroke: '#000', strokeWidth: '3px', fill: '#000'};
-const STYLE_HOLE_SELECTED = {stroke: '#0096fd', strokeWidth: '4px', fill: '#0096fd', cursor: 'move'};
-const STYLE_ARC_BASE = {stroke: '#000', strokeWidth: '3px', strokeDasharray: '5,5', fill: 'none'};
-const STYLE_ARC_SELECTED = {stroke: '#0096fd', strokeWidth: '4px', strokeDasharray: '5,5', fill: 'none', cursor: 'move'};
+const STYLE_HOLE_BASE = {stroke: '#000', strokeWidth: '1px', fill: 'url(#diagonalFillInvisible)'};  // fill: #000
+const STYLE_HOLE_SELECTED = {stroke: '#0096fd', strokeWidth: '1px', fill: '#0096fd', cursor: 'move'};
+const STYLE_ARC_BASE = {stroke: '#000', strokeWidth: '1px', /*strokeDasharray: '5,5',*/ fill: 'none'};
+const STYLE_ARC_SELECTED = {stroke: '#0096fd', strokeWidth: '1px', /*strokeDasharray: '5,5',*/ fill: 'none', cursor: 'move'};
 const EPSILON = 3;
 
 export default {
@@ -48,7 +48,7 @@ export default {
       label: 'Thickness',
       type: 'length-measure',
       defaultValue: {
-        length: 30
+        length: 20
       }
     },
     flip_orizzontal: {
@@ -75,7 +75,7 @@ export default {
       return (
         <g transform={`translate(${-length / 2}, 0)`}>
           <path d={arcPath} style={arcStyle} transform={`translate(${0},${holeWidth}) scale(${1},${-1}) rotate(${0})`}/>
-          <line x1={0} y1={holeWidth - EPSILON} x2={0} y2={0 - EPSILON} style={holeStyle} transform={`scale(${-1},${1})`}/>
+          <line x1={0} y1={holeWidth - EPSILON} x2={0} y2={0 - 0} style={holeStyle} transform={`scale(${-1},${1})`}/>
           <path d={holePath} style={holeStyle}/>
         </g>
       )

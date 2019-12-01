@@ -8,6 +8,7 @@ const epsilon = 20;
 const STYLE_TEXT = { textAnchor: 'middle' };
 const STYLE_LINE = { stroke: SharedStyle.LINE_MESH_COLOR.selected };
 const STYLE_RECT = { strokeWidth: 1, stroke: SharedStyle.LINE_MESH_COLOR.unselected, fill: 'url(#diagonalFill)' };
+const STYLE_RECT_INVISIBLE = { strokeOpacity: 0.3, strokeWidth: 1, stroke: SharedStyle.LINE_MESH_COLOR.unselected, fill: 'url(#diagonalFillInvisible)' };
 const STYLE_RECT_SELECTED = { ...STYLE_RECT, stroke: SharedStyle.LINE_MESH_COLOR.selected };
 
 let translator = new Translator();
@@ -30,7 +31,7 @@ export default function WallFactory(name, info, textures) {
         label: translator.t('thickness'),
         type: 'length-measure',
         defaultValue: {
-          length: 20
+          length: 15
         }
       }
     },
@@ -49,6 +50,8 @@ export default function WallFactory(name, info, textures) {
       let extra_epsilon = 5;
       let textDistance = half_thickness + epsilon + extra_epsilon;
 
+      let fill = element.visible ? STYLE_RECT : STYLE_RECT_INVISIBLE;
+
       return (element.selected) ?
         <g>
           <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT_SELECTED} />
@@ -56,7 +59,7 @@ export default function WallFactory(name, info, textures) {
           <text x={length_5} y={textDistance + char_height} style={STYLE_TEXT}>A</text>
           <text x={length_5} y={-textDistance} style={STYLE_TEXT}>B</text>
         </g> :
-        <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT} />
+        <rect x={-half_thickness} y={-half_thickness} width={length+thickness} height={thickness} style={STYLE_RECT} rx={half_thickness} />
     },
 
     render3D: function (element, layer, scene) {

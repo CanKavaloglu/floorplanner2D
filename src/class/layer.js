@@ -81,6 +81,8 @@ class Layer{
 
   static detectAndUpdateAreas( state, layerID ) {
 
+    console.log(state, layerID);
+
     let verticesArray = [];           //array with vertices coords
     let linesArray;                   //array with edges
 

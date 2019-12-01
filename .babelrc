@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    "transform-object-rest-spread",
+    "import-glob"
+  ],
+  "env": {
+    "commonjs": {
+      "presets": ["env", "react"]
+    },
+    "es": {
+      "presets": [["env", { "modules": false }], "react"]
+    }
+  }
+}
